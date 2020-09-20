@@ -21,13 +21,18 @@ const Home = () => {
   const [sortby, setSortBy] = useState("name")
   const [search, setSearch] = useState("")
   const [edit, setEdit] = useState(null)
-  const storedJwt = localStorage.getItem("token")
+  let storedJwt
+  if (typeof window !== "undefined") {
+    storedJwt = localStorage.getItem("token")
+  }
   const [jwt, setJwt] = useState(storedJwt || null)
   const [showadd, setshowadd] = useState(false)
   useEffect(() => {
     const getMovies = async () => {
       setLoading(true)
-      let fetchedMovies = await axios.get("http://localhost:3000/movies")
+      let fetchedMovies = await axios.get(
+        "https://movie-db-backend-fynd.herokuapp.com/movies"
+      )
       if (sortby === "name")
         fetchedMovies.data.sort((a, b) => (a.name > b.name ? 1 : -1))
       else if (sortby === "popularity")
@@ -39,7 +44,9 @@ const Home = () => {
       console.log(fetchedMovies)
       setMovies(fetchedMovies.data)
       setWorkMovies(fetchedMovies.data)
-      let fetchedGenres = await axios.get("http://localhost:3000/genres")
+      let fetchedGenres = await axios.get(
+        "https://movie-db-backend-fynd.herokuapp.com/genres"
+      )
       setGenre(fetchedGenres.data)
       setLoading(false)
     }

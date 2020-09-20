@@ -1,11 +1,8 @@
-/* tr {
-    display: flex;
-}
-
-tr p {
-    border: 0px 1px solid gray;
-} */
-
 a {
     cursor: pointer;
+}
+
+.edit {
+    color: red !important;
+    font-weight: bold;
 }

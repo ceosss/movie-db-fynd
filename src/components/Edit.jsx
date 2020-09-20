@@ -7,7 +7,10 @@ const Edit = ({ data }) => {
   const [director, setDirector] = useState(data.director)
   const [popularity, setPopularity] = useState(data.popularity)
   const [imdb_score, setImdb_score] = useState(data.imdb_score)
-  const getToken = localStorage.getItem("token")
+  let getToken
+  if (typeof window !== "undefined") {
+    getToken = localStorage.getItem("token")
+  }
   const [username] = useState(decode(getToken).email)
   const [genres, setGeneres] = useState([])
   const [selectedGeneres, setSelectedGeneres] = useState([...data.genre])
@@ -19,7 +22,9 @@ const Edit = ({ data }) => {
   }
   useEffect(() => {
     const getGenres = async () => {
-      const response = await axios.get("http://localhost:3000/genres")
+      const response = await axios.get(
+        "https://movie-db-backend-fynd.herokuapp.com/genres"
+      )
       let newarr = []
       response.data.map(m => newarr.push(m.name))
       let myArray = newarr.filter(function (el) {
@@ -52,7 +57,7 @@ const Edit = ({ data }) => {
   const updateMovie = async () => {
     const update = await axios({
       method: "put",
-      url: "http://localhost:3000/movies",
+      url: "https://movie-db-backend-fynd.herokuapp.com/movies",
       data: qs.stringify({
         name: data.name,
         director,
@@ -70,16 +75,16 @@ const Edit = ({ data }) => {
     window.location.reload()
   }
   return (
-    <div>
+    <div className="edit-movie">
       <h2>EDIT MOVIE</h2>
-      <span>
-        <label>NAME</label>
+      <span className="name">
+        <label>NAME : </label>
         <p>{data.name}</p>
       </span>
       <span>
         {data.lastEdited ? (
           <>
-            <label>Last Edited</label>
+            <label>LAST EDITED BY : </label>
             <p>{data.lastEdited}</p>
           </>
         ) : null}
@@ -111,12 +116,13 @@ const Edit = ({ data }) => {
           onChange={onChangeHandler}
         />
       </span>
-      <div className="container m-5">
+      <div className="container m-5 selected">
+        <h3>Selected Genres</h3>
         {selectedGeneres.map((s, i) => (
           <p key={s + i}>{s}</p>
         ))}
       </div>
-      <div className="container m-5">
+      <div className="container m-5 checkboxes edit-movie-check">
         {genres &&
           genres.map((genre, i) => (
             <span key={genre + i}>

@@ -187,3 +187,53 @@ button {
   padding-bottom: 0;
   margin: 0;
 }
+
+.edit-movie {
+  background-color: aquamarine;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* width: 90%; */
+}
+
+.edit-movie-check label {
+  color: black;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.edit-movie h2 {
+  text-align: center !important;
+  font-size: 2.5rem;
+  margin-top: 20px;
+}
+.edit-movie span {
+  display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+}
+
+.edit-movie span p {
+  font-weight: bold;
+  margin-left: 15px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.edit-movie span label {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.selected {
+  text-align: center;
+}
+
+.name {
+  margin-right: 25px;
+}

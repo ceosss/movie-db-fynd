@@ -7,13 +7,19 @@ const Posts = ({ posts, loading, user, handleEdit }) => {
   if (loading) {
     return <h2>Loading...</h2>
   }
-  const token = localStorage.getItem("token")
+  let token
+  if (typeof window !== "undefined") {
+    token = localStorage.getItem("token") || null
+  }
   const handleDelete = async name => {
-    const del = await axios.delete(`http://localhost:3000/movies/${name}`, {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    })
+    const del = await axios.delete(
+      `https://movie-db-backend-fynd.herokuapp.com/movies/${name}`,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    )
     window.location.reload()
     console.log(del)
   }
@@ -24,6 +30,8 @@ const Posts = ({ posts, loading, user, handleEdit }) => {
           <th scope="col">Name</th>
           <th scope="col">Director</th>
           <th scope="col">Popularity</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -33,10 +41,18 @@ const Posts = ({ posts, loading, user, handleEdit }) => {
             <td>{post.director}</td>
             <td>{post.popularity}</td>
             <td>
-              {user ? <a onClick={() => handleDelete(post.name)}>X</a> : null}
+              {user ? (
+                <a className="edit" onClick={() => handleEdit(post)}>
+                  Edit
+                </a>
+              ) : null}
             </td>
             <td>
-              {user ? <a onClick={() => handleEdit(post)}>edit</a> : null}
+              {user ? (
+                <a className="edit" onClick={() => handleDelete(post.name)}>
+                  X
+                </a>
+              ) : null}
             </td>
           </tr>
         ))}

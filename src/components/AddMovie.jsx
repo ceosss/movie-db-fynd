@@ -9,7 +9,11 @@ const AddMovie = () => {
   const [director, setDirector] = useState("")
   const [imdb_score, setImdb_score] = useState("")
   const [genres, setGenre] = useState([])
-  const getToken = localStorage.getItem("token")
+  let getToken
+  if (typeof window !== "undefined") {
+    getToken = localStorage.getItem("token")
+  }
+
   const [username] = useState(decode(getToken).email)
   const [selectedGeneres, setSelectedGeneres] = useState([])
 
@@ -22,7 +26,9 @@ const AddMovie = () => {
 
   useEffect(() => {
     const getGenres = async () => {
-      const response = await axios.get("http://localhost:3000/genres")
+      const response = await axios.get(
+        "https://movie-db-backend-fynd.herokuapp.com/genres"
+      )
       let newarr = []
       response.data.map(m => newarr.push(m.name))
       setGenre(newarr)
@@ -54,7 +60,7 @@ const AddMovie = () => {
   const updateMovie = async () => {
     const created = await axios({
       method: "post",
-      url: "http://localhost:3000/movies",
+      url: "https://movie-db-backend-fynd.herokuapp.com/movies",
       data: qs.stringify({
         name,
         director,

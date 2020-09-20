@@ -3,7 +3,10 @@ import axios from "axios"
 import qs from "qs"
 
 const Admin = ({ setJwtToken }) => {
-  const storedJwt = localStorage.getItem("token")
+  let storedJwt
+  if (typeof window !== "undefined") {
+    storedJwt = localStorage.getItem("token")
+  }
   const [jwt, setJwt] = useState(storedJwt || null)
   const [email, setEmail] = useState("")
   const [password, setpassword] = useState("")
@@ -14,7 +17,7 @@ const Admin = ({ setJwtToken }) => {
   const onSubmit = async () => {
     const login = await axios({
       method: "post",
-      url: "http://localhost:3000/login",
+      url: "https://movie-db-backend-fynd.herokuapp.com/login",
       data: qs.stringify({
         email,
         password,
@@ -25,13 +28,17 @@ const Admin = ({ setJwtToken }) => {
     })
     if (login.data.status[0] === "s") {
       console.log("LOGIN S")
-      localStorage.setItem("token", login.data.token)
+      if (typeof window !== "undefined") {
+        localStorage.setItem("token", login.data.token)
+      }
       setJwt(login.data.token)
       setJwtToken(login.data.token)
     } else console.log("LOGIN F")
   }
   const logOut = () => {
-    localStorage.removeItem("token")
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("token")
+    }
     setJwt(null)
     setJwtToken(null)
   }
