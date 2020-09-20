@@ -14,9 +14,14 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "axios": "^0.20.0",
     "gatsby": "^2.24.61",
+    "jwt-decode": "^3.0.0-beta.2",
+    "qs": "^6.9.4",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-helmet": "^6.1.0",
+    "react-responsive-modal": "^5.1.0"
   },
   "devDependencies": {
     "prettier": "2.1.1"

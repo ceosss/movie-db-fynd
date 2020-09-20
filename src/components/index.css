@@ -1,0 +1,189 @@
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background-color: #78e08f !important;
+}
+
+.base-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.check-holder {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  border-radius: 15px;
+  width: 90%;
+  background-color: #6a89cc;
+}
+.filters select {
+  /* height: 30px; */
+  border: 1px solid #74b9ff;
+  background-color: white;
+  padding: 10px;
+}
+.head {
+  margin: 30px;
+  background-color: #74b9ff;
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  /* padding: 15px; */
+  border-radius: 15px;
+}
+.head h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  color: white !important;
+  margin: 20px;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+  border: 1px solid #74b9ff;
+  padding: 20px;
+  height: 30px;
+  margin: 20px;
+}
+input[type="submit"] {
+  color: white;
+  background-color: #74b9ff;
+  border: 1px solid black;
+  outline: none;
+  border-radius: 5px;
+  padding: 8px;
+  font-weight: bold;
+}
+.checkboxes {
+  width: 90% !important;
+  display: flex;
+  overflow: scroll;
+  padding: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  overflow-y: hidden;
+}
+
+input[type="checkbox"] {
+  position: relative;
+  padding: 10px !important;
+}
+
+.checkboxes span:first-child {
+  margin-left: 20px;
+}
+
+.checkboxes label {
+  width: 120px;
+  color: white;
+  padding: 10px;
+}
+
+.admin {
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  background-color: wheat;
+}
+
+.admin-input {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movies {
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  margin-bottom: 70px;
+  background-color: #63cdda;
+}
+
+.admin-comp h1,
+h3 {
+  text-align: center !important;
+}
+.admin-comp h3 {
+  margin: 20px auto;
+}
+
+.admin-comp h1 {
+  font-weight: bold;
+}
+
+.add-out {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+}
+.sign-out {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto;
+}
+
+.add-out button {
+  margin-bottom: 30px;
+}
+
+button {
+  color: white;
+  background-color: #74b9ff;
+  border: 1px solid black;
+  outline: none;
+  border-radius: 5px;
+  padding: 8px;
+  font-weight: bold;
+}
+
+.add-movie {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.add-movies label {
+  color: black;
+}
+
+.add-movie span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.add-movie span label {
+  padding: 10px;
+  padding-bottom: 0;
+  margin: 0;
+}
